@@ -1,7 +1,14 @@
+import Chai from "./Chai"
 
 function App() {
 
-  return (<h1>Gagan Mangal</h1>)
+  return (
+    <>
+    <Chai/>
+    <p>With</p>
+    <h1>Mangal Chai</h1>
+    </>
+  )
 }
 
 export default App
