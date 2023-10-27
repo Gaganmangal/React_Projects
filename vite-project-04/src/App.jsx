@@ -11,7 +11,7 @@ function App() {
     let string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     if (number) string += "0123456789";
-    if (char) string += "!#$%&'()*+,-./:;<>=?@[]{}|^_~...∞©®™€¥£¢µ°²×÷§±∑";
+    if (char) string += "!#$%&()*+-/?@[]{}∑";
 
     for (let i = 1; i <= length; i++) {
       let cha = Math.floor(Math.random() * string.length + 1);
@@ -20,9 +20,19 @@ function App() {
     setpassword(pass);
   }, [length, number, char, setpassword]);
 
+  useEffect(() => {
+    passwordGenerator();
+  }, [length, number, char, passwordGenerator]);
+
+  const passwordRef = useRef(null);
+
+  const copypassword = useCallback(() => {
+    passwordRef.current?.select();
+    window.navigator.clipboard.writeText(password);
+  }, [password]);
   return (
     <>
-      <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-orange-500 bg-slate-700">
+      <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-5 my-8 text-orange-500 bg-slate-700">
         <h1 className="text-center my-3 text-3xl text-white">
           Password Generator
         </h1>
@@ -32,13 +42,17 @@ function App() {
             value={password}
             placeholder="Password"
             readOnly
+            ref={passwordRef}
             className=" outline-none w-full py-1 px-3"
           />
-          <button className="outline-none bg-blue-700 hover:bg-blue-600 px-3 py-0.5 shrink-0 text-white">
+          <button
+            onClick={copypassword}
+            className="outline-none bg-blue-700 hover:bg-blue-600 px-3 py-0.5 shrink-0 text-white"
+          >
             Copy
           </button>
         </div>
-        <div className="flex text-xl gap-x-2">
+        <div className="flex text-lg gap-x-2">
           <div className="flex items-center gap-x-1">
             <input
               type="range"
@@ -53,7 +67,26 @@ function App() {
             <label htmlFor="length">Length: {length}</label>
           </div>
           <div className="flex items-center gap-x-1">
-            <input type="text" />
+            <input
+              type="checkbox"
+              defaultChecked={number}
+              id="numberInput"
+              onChange={() => {
+                setnumber((prev) => !prev);
+              }}
+            />
+            <label htmlFor="numberInput">Number</label>
+          </div>
+          <div className="flex items-center gap-x-1">
+            <input
+              type="checkbox"
+              defaultChecked={char}
+              id="characterInput"
+              onChange={(prev) => {
+                setchar((prev) => !prev);
+              }}
+            />
+            <label htmlFor="characterInput">Character</label>
           </div>
         </div>
       </div>
