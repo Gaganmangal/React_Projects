@@ -10,11 +10,10 @@ function InputBox({
   selectCurrency,
   amountDisable = false,
   currencyDisable = false,
-  className = "",
 }) {
   const amountInoutId = useId();
   return (
-    <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
+    <div className={`bg-white p-3 rounded-lg text-sm flex`}>
       <div className="w-1/2">
         <label
           htmlFor={amountInoutId}
