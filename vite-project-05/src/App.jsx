@@ -55,6 +55,7 @@ function App() {
                 -translate-y-1/2
                 border-white rounded-md
                 bg-blue-600 text-white px-2
+                hover:bg-blue-700
                 py-0.5"
                 onClick={swap}
               >
@@ -72,7 +73,7 @@ function App() {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
+              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700"
             >
               Convert {from.toUpperCase()} to {to.toUpperCase()}
             </button>
