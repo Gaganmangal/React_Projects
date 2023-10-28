@@ -26,7 +26,7 @@ function App() {
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
-        backgroundImage: `url('https://images.pexels.com/photos/17130110/pexels-photo-17130110/free-photo-of-panorama-of-the-seaside-modern-city.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load')`,
+        backgroundImage: `url('https://images.pexels.com/photos/3532540/pexels-photo-3532540.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')`,
       }}
     >
       <div className="w-full">
@@ -55,6 +55,7 @@ function App() {
                 -translate-y-1/2
                 border-white rounded-md
                 bg-blue-600 text-white px-2
+                hover:bg-blue-700
                 py-0.5"
                 onClick={swap}
               >
@@ -72,7 +73,7 @@ function App() {
             </div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg"
+              className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700"
             >
               Convert {from.toUpperCase()} to {to.toUpperCase()}
             </button>
