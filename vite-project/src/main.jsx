@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
 // function MyApp(){
 //   return(
@@ -21,15 +21,11 @@ import App from './App.jsx'
 //   <a href="https://www.google.com/" target='_black'>Click</a>
 // )
 
-const react = React.createElement(
-  'a',
-  {href:'https://www.google.com/',target: '_blank'},
-  'click me'
-)
+// const react = React.createElement('a',{href:'https://www.google.com/',target: '_blank'},'click me')
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    
-    // MyApp()
-// anotherreact
-  react
-)
+ReactDOM.createRoot(document.getElementById("root")).render(
+  // MyApp()
+  // anotherreact
+  // react
+  <App />
+);
