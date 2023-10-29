@@ -39,7 +39,6 @@ function Github() {
             <button
               class="flex items-center gap-2 px-6 py-3 font-sans text-xs font-bold text-center text-red-500 uppercase align-middle transition-all rounded-lg select-none hover:bg-red-500/10 active:bg-red-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
-              onClick={gisssst}
             >
               Learn More
               <svg
