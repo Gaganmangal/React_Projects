@@ -5,8 +5,8 @@ import Pokedex from "./components/pokedex/pokedex";
 function App() {
   return (
     <>
-      <Heading />
-      <PokemonList />
+      {/* <Heading />
+      <PokemonList /> */}
     </>
   );
 }

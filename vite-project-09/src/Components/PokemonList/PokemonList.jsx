@@ -8,12 +8,12 @@ export default function PokemonList() {
   async function downloadlist() {
     const response = await axios.get("https://pokeapi.co/api/v2/pokemon");
     const pokemonResult = response.data.results;
-    console.log(response.data);
+    // console.log(response.data);
     const pokemonResultPromise = pokemonResult.map((pokemon) =>
       axios.get(pokemon.url)
     );
     const pokemondata = await axios.all(pokemonResultPromise);
-    console.log(pokemondata);
+    // console.log(pokemondata);
     const res = pokemondata.map((datas) => {
       const pokemon = datas.data;
       return {
@@ -23,7 +23,7 @@ export default function PokemonList() {
         type: pokemon.types,
       };
     });
-    console.log(res);
+    // console.log(res);
     setpokemonlist(res);
     setisLoading(false);
   }
