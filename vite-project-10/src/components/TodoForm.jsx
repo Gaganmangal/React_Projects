@@ -4,10 +4,11 @@ function TodoForm() {
   const [todo, setTodo] = useState("");
   const { addTodo } = useTodo();
   const add = (e) => {
-    e.preventDefult();
+    e.preventDefault();
+
     if (!todo) return;
 
-    addTodo({ todoMsg: todo, completed: false });
+    addTodo({ todo: todo, completed: false });
     setTodo("");
   };
   return (
