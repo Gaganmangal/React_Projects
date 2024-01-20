@@ -3,6 +3,13 @@ import { Field, Form, Formik } from "formik";
 import { db } from "../config/firebase";
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import * as Yup from "yup";
+
+const contactSchemaValidation = Yup.object().shape({
+  name: Yup.string().required("Name is Required"),
+  number: Yup.number().required("Number is Required"),
+  email: Yup.string().email("Invalid Email").required("Email is Required"),
+});
 export const AddAndUpdateContact = ({ isOpen, onClose, isUpdate, contact }) => {
   const addcontact = async (contact) => {
     try {
@@ -28,6 +35,7 @@ export const AddAndUpdateContact = ({ isOpen, onClose, isUpdate, contact }) => {
     <div>
       <Modal isOpen={isOpen} onClose={onClose}>
         <Formik
+          validationSchema={contactSchemaValidation}
           initialValues={
             isUpdate
               ? {
@@ -46,14 +54,23 @@ export const AddAndUpdateContact = ({ isOpen, onClose, isUpdate, contact }) => {
             <div className=" flex flex-col gap-1">
               <label htmlFor="name">Name</label>
               <Field name="name" className="h-10 border pl-2" />
+              <div className=" text-xs text-red-500">
+                <ErrorMessage name="name" />
+              </div>
             </div>
             <div className=" flex flex-col gap-1">
               <label htmlFor="number">Number</label>
               <Field name="number" className="h-10 border pl-2" />
+              <div className=" text-xs text-red-500">
+                <ErrorMessage number="number" />
+              </div>
             </div>
             <div className=" flex flex-col gap-1">
               <label htmlFor="email">Email</label>
               <Field name="email" className="h-10 border pl-2" />
+              <div className=" text-xs text-red-500">
+                <ErrorMessage name="email" />
+              </div>
             </div>
 
             <button className=" bg-orange px-3 py-1.5 border self-end font-bold">

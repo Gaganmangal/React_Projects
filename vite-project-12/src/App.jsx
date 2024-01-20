@@ -50,7 +50,7 @@ const App = () => {
         };
       });
 
-      const filteredContacts = contactLists.filter((contact) =>
+      const filteredContacts = contactlist.filter((contact) =>
         contact.name.toLowerCase().includes(value.toLowerCase())
       );
 
@@ -68,6 +68,7 @@ const App = () => {
           <div className=" relative flex flex-grow items-center ml-5">
             <FiSearch className=" absolute ml-1 text-3xl text-white " />
             <input
+              onChange={filterContacts}
               type="text"
               className=" h-10 flex-grow rounded-md border bg-transparent border-white pl-9 text-white"
             />
