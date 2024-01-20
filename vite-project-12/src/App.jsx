@@ -38,6 +38,7 @@ const App = () => {
         </div>
         <FaPlusCircle className=" cursor-pointer text-5xl text-white" />
       </div>
+      <div>{contacts}</div>
     </div>
   );
 };
