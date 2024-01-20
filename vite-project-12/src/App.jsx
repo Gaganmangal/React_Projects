@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
 import ContactCard from "./components/ContactCard";
-import { Modal } from "./components/Modal";
+import { AddAndUpdateContact } from "./components/AddAndUpdateContact";
 const App = () => {
   const [isOpen, setOpen] = useState(false);
 
