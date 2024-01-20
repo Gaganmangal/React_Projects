@@ -1,5 +1,5 @@
 import { Modal } from "./Modal";
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { db } from "../config/firebase";
 import { collection, addDoc, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -62,7 +62,7 @@ export const AddAndUpdateContact = ({ isOpen, onClose, isUpdate, contact }) => {
               <label htmlFor="number">Number</label>
               <Field name="number" className="h-10 border pl-2" />
               <div className=" text-xs text-red-500">
-                <ErrorMessage number="number" />
+                <ErrorMessage name="number" />
               </div>
             </div>
             <div className=" flex flex-col gap-1">
