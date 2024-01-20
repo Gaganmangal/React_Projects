@@ -13,6 +13,7 @@ const ContactCard = ({ contact }) => {
     try {
       console.log(id);
       await deleteDoc(doc(db, "contact", id));
+      toast.success("Contact Add Successfully");
     } catch (error) {
       console.log(error);
     }

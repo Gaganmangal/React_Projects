@@ -6,6 +6,8 @@ import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "./config/firebase";
 import ContactCard from "./components/ContactCard";
 import { AddAndUpdateContact } from "./components/AddAndUpdateContact";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const [isOpen, setOpen] = useState(false);
 
@@ -36,6 +38,28 @@ const App = () => {
     };
     getContacts();
   }, []);
+  const filterContacts = (e) => {
+    const value = e.target.value;
+
+    const contactRef = collection(db, "contact");
+    onSnapshot(contactRef, (sanpshot) => {
+      const contactlist = sanpshot.docs.map((doc) => {
+        return {
+          id: doc.id,
+          ...doc.data(),
+        };
+      });
+
+      const filteredContacts = contactLists.filter((contact) =>
+        contact.name.toLowerCase().includes(value.toLowerCase())
+      );
+
+      setContacts(filteredContacts);
+
+      return filteredContacts;
+    });
+  };
+
   return (
     <>
       <div className="mx-auto max-w-[370px]">
@@ -60,6 +84,7 @@ const App = () => {
         </div>
       </div>
       <AddAndUpdateContact isOpen={isOpen} onClose={onClose} />
+      <ToastContainer position=" bottom-end" />
     </>
   );
 };
