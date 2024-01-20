@@ -58,9 +58,7 @@ const App = () => {
           ))}
         </div>
       </div>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        Model dsfsd
-      </Modal>
+      <AddAndUpdateContact isOpen={isOpen} onClose={onClose} />
     </>
   );
 };
