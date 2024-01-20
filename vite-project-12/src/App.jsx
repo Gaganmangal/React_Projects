@@ -6,7 +6,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
 import ContactCard from "./components/ContactCard";
 import { Modal } from "./components/Modal";
-
 const App = () => {
   const [isOpen, setOpen] = useState(false);
 
@@ -60,7 +59,7 @@ const App = () => {
         </div>
       </div>
       <Modal isOpen={isOpen} onClose={onClose}>
-        Model
+        Model dsfsd
       </Modal>
     </>
   );
