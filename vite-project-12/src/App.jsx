@@ -4,6 +4,8 @@ import { FaPlusCircle } from "react-icons/fa";
 import Navbar from "./components/Navbar";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
+import ContactCard from "./components/ContactCard";
+
 const App = () => {
   const [contacts, setContacts] = useState([]);
   useEffect(() => {
@@ -38,7 +40,11 @@ const App = () => {
         </div>
         <FaPlusCircle className=" cursor-pointer text-5xl text-white" />
       </div>
-      <div>{contacts}</div>
+      <div className=" mt-4 ml-4">
+        {contacts.map((contact) => (
+          <ContactCard key={contact.id} contact={contact} />
+        ))}
+      </div>
     </div>
   );
 };
