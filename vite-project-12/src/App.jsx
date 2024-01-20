@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { FaPlusCircle } from "react-icons/fa";
 import Navbar from "./components/Navbar";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db } from "./config/firebase";
 import ContactCard from "./components/ContactCard";
 import { AddAndUpdateContact } from "./components/AddAndUpdateContact";
@@ -20,15 +20,16 @@ const App = () => {
     const getContacts = async () => {
       try {
         const contactRef = collection(db, "contact");
-        const contactSnapshort = await getDocs(contactRef);
-        console.log(contactRef);
-        const contactlist = contactSnapshort.docs.map((doc) => {
-          return {
-            id: doc.id,
-            ...doc.data(),
-          };
+        onSnapshot(contactRef, (sanpshot) => {
+          const contactlist = sanpshot.docs.map((doc) => {
+            return {
+              id: doc.id,
+              ...doc.data(),
+            };
+          });
+          setContacts(contactlist);
+          return contactlist;
         });
-        setContacts(contactlist);
       } catch (error) {
         console.log(error);
       }
